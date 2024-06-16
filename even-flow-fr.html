@@ -69,37 +69,96 @@
             </ul>
             <h2>Données brutes</h2>
             <p>
-                Les données proviennent des opendata <a href="https://data.sncf.com/pages/accueil/">SNCF</a>, <a href ="https://data.ratp.fr/explore/?sort=modified">RATP</a> et 
+                Les données proviennent des opendata <a href="https://data.sncf.com/pages/accueil/">SNCF</a>, <a href ="https://data.ratp.fr/explore/?sort=modified" target="_blank">RATP</a> et 
                 <a href="https://data.iledefrance-mobilites.fr/pages/home/">Île de France Mobilités</a>.
             </p>
             <h3>Données SNCF</h3>
             <p>
-                Le dataset utilisé se nomme Fréquentation en gares et est disponible <a href="https://data.sncf.com/explore/dataset/frequentation-gares/information/?disjunctive.nom_gare&disjunctive.code_postal&sort=nom_gare">ici</a>.
+                Le premier dataset utilisé se nomme <a href="https://data.sncf.com/explore/dataset/frequentation-gares/information/?disjunctive.nom_gare&disjunctive.code_postal&sort=nom_gare" target="_blank">Fréquentation en gares</a>.
                 Ce jeu de données représente la fréquentation annuelle de l’ensemble des 3000 gares voyageurs de 2015 à 2022.
                 Chaque ligne du dataset représente une gare unique, avec une feature distincte pour chaque année de comptage.
             </p>
             <p>
-                <strong>Utilisation du dataset:</strong> Ce dataset donne donne la fréquentation totale par année pour
+                <strong>Utilisation du dataset :</strong> Ce dataset donne donne la fréquentation totale par année pour
                 toutes les gares du réseau SNCF. Son utilisation, limitée aux gares franciliennes, permettra d'attribuer un
                 rang à chacune des gares, de la plus à la moins fréquentée du réseau.
+            </p>
+            <p>
+                Un second dataset, <a href="Comptage des voyageurs montants dans les trains Transilien" target="_blank">Comptage des voyageurs montants dans les trains Transilien</a> contient le résultat de
+                de la dernière étude de comptage des voyageurs montants dans les trains Transilien par tranche 
+                horaire. Ces comptages manuels sont réalisés tous les trois à quatre ans et 
+                comptent le nombre de montants pour les jours de semaine d'une part, les samedis et les dimanches d'autre part.
+            </p>
+            <p>
+                <strong>Utilisation du dataset :</strong> Ce dataset apporte une information sur la fréquentation à la fois par ligne et
+                par moment de la journée. Il permettra d'étudier les schéma de fréquentation de chaque ligne au fil d'une journée type.
             </p>
             <h3>Données RATP</h3>
             <p>
                 Un ensemble de dataset a été utilisé, génériquement dénommés Trafic annuel entrant
                 par station du réseau ferré X, où X représente l'année concernée. Les données utilisées
-                concernent les années <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2021/information/">2021</a>, 
-                <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2020/information/">2020</a>,
-                <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2019/information/">2019</a>,
-                <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2018/information/">2018</a>,
-                <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2017/information/">2017</a>,
-                <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2016/information/">2016</a>
-                et <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2015/information/">2015</a>.
+                concernent les années <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2021/information/" target="_blank">2021</a>, 
+                <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2020/information/" target="_blank">2020</a>,
+                <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2019/information/" target="_blank">2019</a>,
+                <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2018/information/" target="_blank">2018</a>,
+                <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2017/information/" target="_blank">2017</a>,
+                <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2016/information/" target="_blank">2016</a>
+                et <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2015/information/" target="_blank">2015</a>.
                 A l'instar du dataset SNCF, chaque ligne est propre à une station, indiquant le nombre de
                 voyageur par station pour l'année. Pour les stations offrant des correspondances entre le métro et le RER, comme c'est  le cas
                 à la station Nation, les données pour chaque réseau sont présentées sur des lignes différentes. Pour un même réseau, les données
                 il s'agit de la fréquentation globale de la station, le détail par ligne n'est pas communiqué. 
             </p>
+            <p>
+                <strong>Utilisation des datasets :</strong> Ces datasets, une fois poolés, complètent les données SNCF pour les branches
+                des RER A et B régies par la RATP. L'établissement des rangs de fréquentation des stations sera effectué après concaténation des données
+                RATP et SNCF afin de prendre en compte toutes les gares d'Île de France.
+            </p>
+            <h3>Données Île de France Mobilités</h3>
+            <p>
+                Les données brutes sont un ensemble de datasets dénommé <a href="https://data.iledefrance-mobilites.fr/explore/dataset/histo-validations-reseau-surface/table/" target="_blank">Historique des données de validation sur le réseau de surface (2015-2022)</a>
+                Ces tables rapportent la fréquentation par gare, par jour et par type d'abonnement souscrit. Les voyageurs utilisant un ticket t+ ou tout autre tarification 
+                hors abonnement ne sont pas comptabilisés. Le complément des données pour le premier semestre <a href="https://data.iledefrance-mobilites.fr/explore/dataset/validations-reseau-surface-nombre-validations-par-jour-1er-trimestre/information/" target="_blank">2023</a> était disponible séparément.
+            </p>
+            <p>
+                <strong>Utilisation des datasets :</strong> Ces données vont apporter des informations importantes, à la fois concernant la fréquentation quotidienne dans 
+                les gares versaillaises, mais aussi sur les types d'abonnements utilisés par les voyageurs.
+            </p>
             <h2>Preprocessing</h2>
+            <p>
+                Tous les datasets originaux ont été retravaillés pour les rendre exploitables. Le preprocessing a mené à la création
+                de trois datasets.
+            </p>
+            <h3>ev_versailles.csv</h3>
+            <p>
+                Ce dataset a été créé à partir des données de fréquentation annuelle des gares SNCF et RATP. Tous les datasets RATP
+                (un par année) ont été fusionnés en un seul dataframe, avec élimination des lignes concernant les stations de métro. 
+                Après fusion des données SNCF et RATP (RER A et RER B), les comptes ont été additionnés pour les gares présentes dans
+                chacun des dataframes avant fusion : c'est le cas par exemple pour la gare de Nanterre Université desservie par le 
+                transilien L (SNCF) et le RER A (RATP).
+            </p>
+            <p>
+                Plusieurs features ont été créées, comme une estimation du traffic pré-covid (moyenne et SD sur les années 2015 à 2019
+                inclues), et un calcul de la différence entre ce traffic moyen par gare et le trafic enregistré en 2020, et en 2021. Enfin,
+                calcul de la différence de trafic entre 2020 et 2021.
+            </p>
+            <p>Pour finir, les observations du dataset ont été ordonnées selon la fréquentation par année, de façon à définir,
+                pour chaque gare et chaque année, le rang parmis l'ensemble des gares franciliennes. Une fois le classement attribué,
+                seules les observations concernant les gares versaillaises ont été conservées. 
+            </p>
+            <h3>daily.csv</h3>
+            <p>
+                Ce dataset a été créé à partir des données Île de France Mobilités, par concaténation
+                des différents datasets originaux (2015-2022 et 2023 S1). Certains abonnements ont été regroupés
+                (ex : tarifications sociales), et les taux de fréquentations des gares hors Versailles ont été transformées
+                en une unique valeur moyenne pour obtenir une valeur de comparaison "Île de France".
+            </p>
+            <h3>counts.csv</h3>
+            <p>
+                Ce dataset a été créé à partir des données de comptage SNCF. Quasiment utilisable en l'état, 
+                le préprocessing a été limité a de simples modification de noms de colonnes, ou de valeurs textuelles,
+                ainsi qu'un élagage des colonnes inutiles pour le projet.
+            </p>
             <h2>Construction du Dashboard</h2>
             <h2>Résultats</h2>
             <h2>Conclusions</h2>

@@ -159,8 +159,67 @@
                 le préprocessing a été limité a de simples modification de noms de colonnes, ou de valeurs textuelles,
                 ainsi qu'un élagage des colonnes inutiles pour le projet.
             </p>
-            <h2>Construction du Dashboard</h2>
             <h2>Résultats</h2>
+            <h3>Vue principale</h3>
+            <figure>
+                <img src="static/ef_board_full.png" alt="Dashboard - vue principale" width="1000">
+                <figcaption>
+                    Vue principale du dashboard
+                </figcaption>
+            </figure>
+            <p>
+                La première vue du dashboard donne des informations poolées pour l'ensemble des cinq gares étudiées.
+                Quand c'est pertinent, les données globales pour l'Île de France sont également affichées. Le dashboard
+                est organisé en 4 secteurs.
+            </p>
+            <p>
+                En haut à gauche, trois éléments card présentent une information générale et rapidement accessible, 
+                reflétant une vue d'ensemble des données analysées: nombre total de passagers enregistrés, fréquentation
+                moyenne par jour en semaine et le weekend, ainsi que le type d'abonnement le plus utilisé. Ces données
+                sont modulables par gare et par année.
+            </p>
+            <div class="dashboard-analysis">
+                <p>
+                    Il existe d'importants écarts de fréquentation entre les gares. Sur la période étudiée, Versailles Chantiers a
+                    accueilli plus de 39 millions de voyageurs, contre seulement 2 millions pour Porchefontaine. La réduction moyenne 
+                    du trafic les weekends se situe autour de 60 %. Une gare se démarque, Versailles Château Rive Gauche, dont le trafic ne
+                    diminue que de 37 % le weekend, en lien avec sa position centrale et surtout sa proximité avec le Château de Versailles.
+                </p>
+            </div>
+            <p>
+                En haut à droite, une visualisation temporelle du trafic offre une compréhension rapide de l'évolution du
+                trafic chaque mois. Les résultats sont présentés en vert pour Versailles et en gris pour la moyenne sur l'Ile de France.
+                Les données pour Versailles sont une moyenne sur l'ensemble des gares, et sont filtrables par gare et par année.
+            </p>
+            <div class="dashboard-analysis">
+                <p>
+                    La saisonalité du trafic versaillais est stable au fil des années (hors pandémie COVID-19), avec une chute importante du 
+                    trafic en juillet - août et une diminution de moindre ampleur en décembre. Les variations saisonnières sont comparables d'une
+                    gare à l'autre, et se superposent globalement à la saisonnalité observée pour toute l'Ile de France. La gare de Versailles Château
+                    Rive Gauche ne fait pas exception, suggérant que la part du trafic directement liée au tourisme n'est pas exarcerbée l'été.
+                </p>
+            </div>
+            <p>
+                En bas à gauche, un diagramme en barres horizontales représente le trafic moyen par jour dans les différentes gares, avec la moyenne
+                francilienne comme référence. Ces barres permettent d'appliquer le filtre par gare pour le reste des visualisations, et offrent la
+                possibilité d'un drill-through vers une vue détaillée pour chaque gare.
+            </p>
+            <div class="dashboard-analysis">
+                <p>
+                    Cet élément permet de distinguer trois types de gares. Tout d'abord la gare de Versailles Chantiers, qui présente une 
+                    fréquentation quotidienne moyenne de 13.1k passagers, soit environ le triple de la fréquentation moyenne en Ile de France.
+                    Les gares de Versailles Rive Droite et Versailles Château Rive Gauche ont quant à elle une fréquentation quotidienne de l'ordre de 4k
+                    passagers, soit très proche de ce qui est enregistré pour l'Ile de France. Enfin, Montreuil et Porchefontaine qui offrent une désserte
+                    locale de quartiers périphériques, ont une fréquentation inférieure à 2k passagers par jour.
+                </p>
+                <p>
+                    De nombreux facteurs font fluctuer la fréquentation quotidienne, aussi une valeur de fréquentation moyenne globale présente un intérêt limité ; les weekends, 
+                    mois d'été ainsi que les relevées des années 2020 et 2021 (COVID-19) minorent la fréquentation moyenne en semaine.
+                    Les différents filtres du dashboard, par gare et par année, ainsi que la possibilité d'obtenir des résultats plus détaillés grâce au drill-through,
+                    permettent d'affiner les résultats. Par exemple, la vue initiale indique une fréquentation moyenne par jour de 13.1k passagers à Versailles Chantiers, néanmoins 
+                    les valeurs des mois de mars et juin 2023 portent ce chiffre autour de 21k passagers en moyenne dans cette gare les jours de semaine.
+                </p>
+            </div>        
             <h2>Conclusions</h2>
         </div>
     </body>

@@ -169,12 +169,15 @@
             </figure>
             <p>
                 La première vue du dashboard donne des informations poolées pour l'ensemble des cinq gares étudiées.
-                Quand c'est pertinent, les données globales pour l'Île de France sont également affichées. Le dashboard
-                est organisé en 4 secteurs.
+                Quand c'est pertinent, les données globales pour l'Île de France sont également affichées. Deux types de
+                filtres sont disponibles : un filtre par gare et un filtre par année. Un drill-through permet d'accéder à
+                des informations détaillées pour chaque gare : classement annuel parmi la fréquentation des gares francilliennes,
+                trafic détaillé par jour, projection de la fréquentation par ligne suivant le moment de la journée. 
             </p>
+            <h4>Cards</h4>
             <p>
-                En haut à gauche, trois éléments card présentent une information générale et rapidement accessible, 
-                reflétant une vue d'ensemble des données analysées: nombre total de passagers enregistrés, fréquentation
+                Trois éléments card sont présents sur le dashboard, offrant une information générale et rapidement accessible. 
+                Ces derniers donnent une vue d'ensemble des données analysées: nombre total de passagers enregistrés, fréquentation
                 moyenne par jour en semaine et le weekend, ainsi que le type d'abonnement le plus utilisé. Ces données
                 sont modulables par gare et par année.
             </p>
@@ -186,8 +189,9 @@
                     diminue que de 37 % le weekend, en lien avec sa position centrale et surtout sa proximité avec le Château de Versailles.
                 </p>
             </div>
+            <h4>Évolution mensuelle du trafic</h4>
             <p>
-                En haut à droite, une visualisation temporelle du trafic offre une compréhension rapide de l'évolution du
+                Une visualisation temporelle du trafic offre une compréhension rapide de l'évolution du
                 trafic chaque mois. Les résultats sont présentés en vert pour Versailles et en gris pour la moyenne sur l'Ile de France.
                 Les données pour Versailles sont une moyenne sur l'ensemble des gares, et sont filtrables par gare et par année.
             </p>
@@ -199,8 +203,9 @@
                     Rive Gauche ne fait pas exception, suggérant que la part du trafic directement liée au tourisme n'est pas exarcerbée l'été.
                 </p>
             </div>
+            <h4>Trafic moyen par jour</h4>
             <p>
-                En bas à gauche, un diagramme en barres horizontales représente le trafic moyen par jour dans les différentes gares, avec la moyenne
+                Le diagramme en barres horizontales représente le trafic moyen par jour dans les différentes gares, avec la moyenne
                 francilienne comme référence. Ces barres permettent d'appliquer le filtre par gare pour le reste des visualisations, et offrent la
                 possibilité d'un drill-through vers une vue détaillée pour chaque gare.
             </p>
@@ -219,7 +224,37 @@
                     permettent d'affiner les résultats. Par exemple, la vue initiale indique une fréquentation moyenne par jour de 13.1k passagers à Versailles Chantiers, néanmoins 
                     les valeurs des mois de mars et juin 2023 portent ce chiffre autour de 21k passagers en moyenne dans cette gare les jours de semaine.
                 </p>
-            </div>        
+            </div>
+            <h4>Évolution du trafic post COVID-19</h4>
+            <p>
+                Ce diagramme en barres verticales permet de détailler l'évolution du trafic lors de la pandémie de COVID-19. Pour rappel du contexte, les premiers cas de COVID-19
+                ont été confirmés en France dès la fin du mois de janvier 2024. Devant l'explosion du nombre de cas, un premier confinement est déclaré en date du 17 mars 2024.
+                Cette pandémie, avec les différents confinements et les mesures de distanciation sociale perturberont le fonctionnement global de la société française, 
+                avec un impact marqué sur la fréquentation des transports en commun.
+            </p>        
+            <p>
+                Le focus est donc fait sur cette période, les données de 2019 (référence pré-COVID), 2020, 2021 et 2022 sont montrées côte à côte. Sous les barres
+                2020, 2021 et 2022 est précisée la différence relative par rapport à 2019.
+            </p>
+            <div class="dashboard-analysis">
+                <p>
+                    L'année 2020 a vu le trafic ferroviaire versaillais divisé par deux, allant jusqu'à une baisse de 60% à Versailles Rive Droite et Montreuil, les
+                    deux gares de la ligne L. Une hypothèse est que ces deux gares permettent de desservir avant tout La Défense, où la grande majorité des
+                    emplois tertiaires ont du mettre en place le télétravail. Du côté de Versailles Chantiers, le trafic n'a diminué que de 36 %, soulignant une fois encore le caractère majeur de cette 
+                    gare dans le réseau francilien. Par la suite, les années 2021 et 2022 ont vu une reprise du trafic, avec une réaugmentation constante. A l'inverse, le trafic n'a pas repris
+                    à Versailles Château Rive Gauche : -54 % en 2020 et -52 % en 2021. Cette gare est d'ailleurs, en 2022, celle qui enregistre toujours la plus forte baisse de 
+                    trafic comparativement à 2019 (-22 %). Le trafic est en revanche revenu au niveau de 2019 pour Versailles Chantiers, et a déjà augmenté de 5% à Versailles
+                    Rive Droite. 
+                </p>
+            </div>
+            <h4>Titres de transport</h4>
+            <p>
+                La dernière visualisation concerne les types d'abonnement enregistrés et on été regroupés en trois catégories : Forfait Navigo, Forfait Imagine R et "Autres".
+                Le forfait Navigo est un abonnement accessible sans justification de statut, décliné sous plusieurs formats (annuel, mensuel, hebdomadaire...) qui permet de voyager
+                dans toute l'Île de France. Le forfait Imagine R permet également de se déplacer partout en Île de France, a un prix réduit par rapport au forfait Navigo. Il est destiné
+                aux écoliers et étudiants de moins de 25 ans. Les autres types de titres de transport ont été regroupés pour faciliter la lecture. Parmi ces titres se trouvaient notamment
+                Améthyste (voyageurs de plus de 65 ans) et les tarifications solidaires à destinations des personnes ayant de faibles revenus.
+            </p>
             <h2>Conclusions</h2>
         </div>
     </body>

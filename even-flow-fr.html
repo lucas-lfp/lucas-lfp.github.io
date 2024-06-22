@@ -68,206 +68,212 @@
                 <li>Comprendre la répartition des flux pendulaires de passagers</li>
             </ul>
             <h2>Données brutes</h2>
-            <p>
-                Les données proviennent des opendata <a href="https://data.sncf.com/pages/accueil/">SNCF</a>, <a href ="https://data.ratp.fr/explore/?sort=modified" target="_blank">RATP</a> et 
-                <a href="https://data.iledefrance-mobilites.fr/pages/home/">Île de France Mobilités</a>.
-            </p>
-            <h3>Données SNCF</h3>
-            <p>
-                Le premier dataset utilisé se nomme <a href="https://data.sncf.com/explore/dataset/frequentation-gares/information/?disjunctive.nom_gare&disjunctive.code_postal&sort=nom_gare" target="_blank">Fréquentation en gares</a>.
-                Ce jeu de données représente la fréquentation annuelle de l’ensemble des 3000 gares voyageurs de 2015 à 2022.
-                Chaque ligne du dataset représente une gare unique, avec une feature distincte pour chaque année de comptage.
-            </p>
-            <p>
-                <strong>Utilisation du dataset :</strong> Ce dataset donne donne la fréquentation totale par année pour
-                toutes les gares du réseau SNCF. Son utilisation, limitée aux gares franciliennes, permettra d'attribuer un
-                rang à chacune des gares, de la plus à la moins fréquentée du réseau.
-            </p>
-            <p>
-                Un second dataset, <a href="Comptage des voyageurs montants dans les trains Transilien" target="_blank">Comptage des voyageurs montants dans les trains Transilien</a> contient le résultat de
-                de la dernière étude de comptage des voyageurs montants dans les trains Transilien par tranche 
-                horaire. Ces comptages manuels sont réalisés tous les trois à quatre ans et 
-                comptent le nombre de montants pour les jours de semaine d'une part, les samedis et les dimanches d'autre part.
-            </p>
-            <p>
-                <strong>Utilisation du dataset :</strong> Ce dataset apporte une information sur la fréquentation à la fois par ligne et
-                par moment de la journée. Il permettra d'étudier les schéma de fréquentation de chaque ligne au fil d'une journée type.
-            </p>
-            <h3>Données RATP</h3>
-            <p>
-                Un ensemble de dataset a été utilisé, génériquement dénommés Trafic annuel entrant
-                par station du réseau ferré X, où X représente l'année concernée. Les données utilisées
-                concernent les années <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2021/information/" target="_blank">2021</a>, 
-                <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2020/information/" target="_blank">2020</a>,
-                <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2019/information/" target="_blank">2019</a>,
-                <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2018/information/" target="_blank">2018</a>,
-                <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2017/information/" target="_blank">2017</a>,
-                <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2016/information/" target="_blank">2016</a>
-                et <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2015/information/" target="_blank">2015</a>.
-                A l'instar du dataset SNCF, chaque ligne est propre à une station, indiquant le nombre de
-                voyageur par station pour l'année. Pour les stations offrant des correspondances entre le métro et le RER, comme c'est  le cas
-                à la station Nation, les données pour chaque réseau sont présentées sur des lignes différentes. Pour un même réseau, les données
-                il s'agit de la fréquentation globale de la station, le détail par ligne n'est pas communiqué. 
-            </p>
-            <p>
-                <strong>Utilisation des datasets :</strong> Ces datasets, une fois poolés, complètent les données SNCF pour les branches
-                des RER A et B régies par la RATP. L'établissement des rangs de fréquentation des stations sera effectué après concaténation des données
-                RATP et SNCF afin de prendre en compte toutes les gares d'Île de France.
-            </p>
-            <h3>Données Île de France Mobilités</h3>
-            <p>
-                Les données brutes sont un ensemble de datasets dénommé <a href="https://data.iledefrance-mobilites.fr/explore/dataset/histo-validations-reseau-surface/table/" target="_blank">Historique des données de validation sur le réseau de surface (2015-2022)</a>
-                Ces tables rapportent la fréquentation par gare, par jour et par type d'abonnement souscrit. Les voyageurs utilisant un ticket t+ ou tout autre tarification 
-                hors abonnement ne sont pas comptabilisés. Le complément des données pour le premier semestre <a href="https://data.iledefrance-mobilites.fr/explore/dataset/validations-reseau-surface-nombre-validations-par-jour-1er-trimestre/information/" target="_blank">2023</a> était disponible séparément.
-            </p>
-            <p>
-                <strong>Utilisation des datasets :</strong> Ces données vont apporter des informations importantes, à la fois concernant la fréquentation quotidienne dans 
-                les gares versaillaises, mais aussi sur les types d'abonnements utilisés par les voyageurs.
-            </p>
-            <h2>Preprocessing</h2>
-            <p>
-                Tous les datasets originaux ont été retravaillés pour les rendre exploitables. Le preprocessing a mené à la création
-                de trois datasets.
-            </p>
-            <h3>ev_versailles.csv</h3>
-            <p>
-                Ce dataset a été créé à partir des données de fréquentation annuelle des gares SNCF et RATP. Tous les datasets RATP
-                (un par année) ont été fusionnés en un seul dataframe, avec élimination des lignes concernant les stations de métro. 
-                Après fusion des données SNCF et RATP (RER A et RER B), les comptes ont été additionnés pour les gares présentes dans
-                chacun des dataframes avant fusion : c'est le cas par exemple pour la gare de Nanterre Université desservie par le 
-                transilien L (SNCF) et le RER A (RATP).
-            </p>
-            <p>
-                Plusieurs features ont été créées, comme une estimation du traffic pré-covid (moyenne et SD sur les années 2015 à 2019
-                inclues), et un calcul de la différence entre ce traffic moyen par gare et le trafic enregistré en 2020, et en 2021. Enfin,
-                calcul de la différence de trafic entre 2020 et 2021.
-            </p>
-            <p>Pour finir, les observations du dataset ont été ordonnées selon la fréquentation par année, de façon à définir,
-                pour chaque gare et chaque année, le rang parmis l'ensemble des gares franciliennes. Une fois le classement attribué,
-                seules les observations concernant les gares versaillaises ont été conservées. 
-            </p>
-            <h3>daily.csv</h3>
-            <p>
-                Ce dataset a été créé à partir des données Île de France Mobilités, par concaténation
-                des différents datasets originaux (2015-2022 et 2023 S1). Certains abonnements ont été regroupés
-                (ex : tarifications sociales), et les taux de fréquentations des gares hors Versailles ont été transformées
-                en une unique valeur moyenne pour obtenir une valeur de comparaison "Île de France".
-            </p>
-            <h3>counts.csv</h3>
-            <p>
-                Ce dataset a été créé à partir des données de comptage SNCF. Quasiment utilisable en l'état, 
-                le préprocessing a été limité a de simples modification de noms de colonnes, ou de valeurs textuelles,
-                ainsi qu'un élagage des colonnes inutiles pour le projet.
-            </p>
-            <h2>Résultats</h2>
-            <h3>Vue principale</h3>
-            <figure>
-                <img src="static/ef_board_full.png" alt="Dashboard - vue principale" width="1000">
-                <figcaption>
-                    Vue principale du dashboard
-                </figcaption>
-            </figure>
-            <p>
-                La première vue du dashboard donne des informations poolées pour l'ensemble des cinq gares étudiées.
-                Quand c'est pertinent, les données globales pour l'Île de France sont également affichées. Deux types de
-                filtres sont disponibles : un filtre par gare et un filtre par année. Un drill-through permet d'accéder à
-                des informations détaillées pour chaque gare : classement annuel parmi la fréquentation des gares francilliennes,
-                trafic détaillé par jour, projection de la fréquentation par ligne suivant le moment de la journée. 
-            </p>
-            <h4>Cards</h4>
-            <p>
-                Trois éléments card sont présents sur le dashboard, offrant une information générale et rapidement accessible. 
-                Ces derniers donnent une vue d'ensemble des données analysées: nombre total de passagers enregistrés, fréquentation
-                moyenne par jour en semaine et le weekend, ainsi que le type d'abonnement le plus utilisé. Ces données
-                sont modulables par gare et par année.
-            </p>
-            <div class="dashboard-analysis">
                 <p>
-                    Il existe d'importants écarts de fréquentation entre les gares. Sur la période étudiée, Versailles Chantiers a
-                    accueilli plus de 39 millions de voyageurs, contre seulement 2 millions pour Porchefontaine. La réduction moyenne 
-                    du trafic les weekends se situe autour de 60 %. Une gare se démarque, Versailles Château Rive Gauche, dont le trafic ne
-                    diminue que de 37 % le weekend, en lien avec sa position centrale et surtout sa proximité avec le Château de Versailles.
+                    Les données proviennent des opendata <a href="https://data.sncf.com/pages/accueil/" target="_blank">SNCF</a>, <a href="https://data.ratp.fr/explore/?sort=modified" target="_blank">RATP</a>, et 
+                    <a href="https://data.iledefrance-mobilites.fr/pages/home/" target="_blank">Île de France Mobilités</a>.
                 </p>
-            </div>
-            <h4>Évolution mensuelle du trafic</h4>
-            <p>
-                Une visualisation temporelle du trafic offre une compréhension rapide de l'évolution du
-                trafic chaque mois. Les résultats sont présentés en vert pour Versailles et en gris pour la moyenne sur l'Ile de France.
-                Les données pour Versailles sont une moyenne sur l'ensemble des gares, et sont filtrables par gare et par année.
-            </p>
-            <div class="dashboard-analysis">
+
+                <h3>Données SNCF</h3>
                 <p>
-                    La saisonalité du trafic versaillais est stable au fil des années (hors pandémie COVID-19), avec une chute importante du 
-                    trafic en juillet - août et une diminution de moindre ampleur en décembre. Les variations saisonnières sont comparables d'une
-                    gare à l'autre, et se superposent globalement à la saisonnalité observée pour toute l'Ile de France. La gare de Versailles Château
-                    Rive Gauche ne fait pas exception, suggérant que la part du trafic directement liée au tourisme n'est pas exarcerbée l'été.
-                </p>
-            </div>
-            <h4>Trafic moyen par jour</h4>
-            <p>
-                Le diagramme en barres horizontales représente le trafic moyen par jour dans les différentes gares, avec la moyenne
-                francilienne comme référence. Ces barres permettent d'appliquer le filtre par gare pour le reste des visualisations, et offrent la
-                possibilité d'un drill-through vers une vue détaillée pour chaque gare.
-            </p>
-            <div class="dashboard-analysis">
-                <p>
-                    Cet élément permet de distinguer trois types de gares. Tout d'abord la gare de Versailles Chantiers, qui présente une 
-                    fréquentation quotidienne moyenne de 13.1k passagers, soit environ le triple de la fréquentation moyenne en Ile de France.
-                    Les gares de Versailles Rive Droite et Versailles Château Rive Gauche ont quant à elle une fréquentation quotidienne de l'ordre de 4k
-                    passagers, soit très proche de ce qui est enregistré pour l'Ile de France. Enfin, Montreuil et Porchefontaine qui offrent une désserte
-                    locale de quartiers périphériques, ont une fréquentation inférieure à 2k passagers par jour.
+                    Le premier dataset utilisé se nomme <a href="https://data.sncf.com/explore/dataset/frequentation-gares/information/?disjunctive.nom_gare&disjunctive.code_postal&sort=nom_gare" target="_blank">Fréquentation en gares</a>.
+                    Ce jeu de données représente la fréquentation annuelle de l’ensemble des 3000 gares voyageurs de 2015 à 2022.
+                    Chaque ligne du dataset représente une gare unique, avec une feature distincte pour chaque année de comptage.
                 </p>
                 <p>
-                    De nombreux facteurs font fluctuer la fréquentation quotidienne, aussi une valeur de fréquentation moyenne globale présente un intérêt limité ; les weekends, 
-                    mois d'été ainsi que les relevées des années 2020 et 2021 (COVID-19) minorent la fréquentation moyenne en semaine.
-                    Les différents filtres du dashboard, par gare et par année, ainsi que la possibilité d'obtenir des résultats plus détaillés grâce au drill-through,
-                    permettent d'affiner les résultats. Par exemple, la vue initiale indique une fréquentation moyenne par jour de 13.1k passagers à Versailles Chantiers, néanmoins 
-                    les valeurs des mois de mars et juin 2023 portent ce chiffre autour de 21k passagers en moyenne dans cette gare les jours de semaine.
+                    <strong>Utilisation du dataset :</strong> Ce dataset donne la fréquentation totale par année pour
+                    toutes les gares du réseau SNCF. Son utilisation, limitée aux gares franciliennes, permettra d'attribuer un
+                    rang à chacune des gares, de la plus à la moins fréquentée du réseau.
                 </p>
-            </div>
-            <h4>Évolution du trafic post COVID-19</h4>
-            <p>
-                Ce diagramme en barres verticales permet de détailler l'évolution du trafic lors de la pandémie de COVID-19. Pour rappel du contexte, les premiers cas de COVID-19
-                ont été confirmés en France dès la fin du mois de janvier 2024. Devant l'explosion du nombre de cas, un premier confinement est déclaré en date du 17 mars 2024.
-                Cette pandémie, avec les différents confinements et les mesures de distanciation sociale perturberont le fonctionnement global de la société française, 
-                avec un impact marqué sur la fréquentation des transports en commun.
-            </p>        
-            <p>
-                Le focus est donc fait sur cette période, les données de 2019 (référence pré-COVID), 2020, 2021 et 2022 sont montrées côte à côte. Sous les barres
-                2020, 2021 et 2022 est précisée la différence relative par rapport à 2019.
-            </p>
-            <div class="dashboard-analysis">
                 <p>
-                    L'année 2020 a vu le trafic ferroviaire versaillais divisé par deux, allant jusqu'à une baisse de 60% à Versailles Rive Droite et Montreuil, les
-                    deux gares de la ligne L. Une hypothèse est que ces deux gares permettent de desservir avant tout La Défense, où la grande majorité des
-                    emplois tertiaires ont du mettre en place le télétravail. Du côté de Versailles Chantiers, le trafic n'a diminué que de 36 %, soulignant une fois encore le caractère majeur de cette 
-                    gare dans le réseau francilien. Par la suite, les années 2021 et 2022 ont vu une reprise du trafic, avec une réaugmentation constante. A l'inverse, le trafic n'a pas repris
-                    à Versailles Château Rive Gauche : -54 % en 2020 et -52 % en 2021. Cette gare est d'ailleurs, en 2022, celle qui enregistre toujours la plus forte baisse de 
-                    trafic comparativement à 2019 (-22 %). Le trafic est en revanche revenu au niveau de 2019 pour Versailles Chantiers, et a déjà augmenté de 5% à Versailles
-                    Rive Droite. 
+                    Un second dataset, <a href="https://ressources.data.sncf.com/explore/dataset/comptage-voyageurs-trains-transilien/information/" target="_blank">Comptage des voyageurs montants dans les trains Transilien</a>, contient le résultat de
+                    la dernière étude de comptage des voyageurs montants dans les trains Transilien par tranche 
+                    horaire. Ces comptages manuels sont réalisés tous les trois à quatre ans et 
+                    comptent le nombre de montants pour les jours de semaine d'une part, les samedis et les dimanches d'autre part.
                 </p>
-            </div>
-            <h4>Titres de transport</h4>
-            <p>
-                La dernière visualisation concerne les types d'abonnement enregistrés et on été regroupés en trois catégories : Forfait Navigo, Forfait Imagine R et "Autres".
-                Le forfait Navigo est un abonnement accessible sans justification de statut, décliné sous plusieurs formats (annuel, mensuel, hebdomadaire...) qui permet de voyager
-                dans toute l'Île de France. Le forfait Imagine R permet également de se déplacer partout en Île de France, a un prix réduit par rapport au forfait Navigo. Il est destiné
-                aux écoliers et étudiants de moins de 25 ans. Les autres types de titres de transport ont été regroupés pour faciliter la lecture. Parmi ces titres se trouvaient notamment
-                Améthyste (voyageurs de plus de 65 ans) et les tarifications solidaires à destinations des personnes ayant de faibles revenus.
-            </p>
-            <div class="dashboard-analysis">
                 <p>
-                    Les deux tiers des voyageurs sont porteurs d'un forfait navigo, tandis qu'un quart utilise le forfait
-                    imagine R. Le reste est réparti entre les différents forfaits proposés par Île de France Mobilités (forfait
-                    Améthyste etc.). De façon intéressante, cette répartition est très comparable d'une gare à l'autre. En revanche, on constate une 
-                    évolution des usages au fil des années : si la part de forfait Imagine R reste stable, autour de 22%, entre 2015 et 2019, la part
-                    de forfait Navigo quant à elle augmente jusqu'à atteindre 70% en 2018. Le forfait Navigo recule ensuite pour ne plus représenter que 
-                    57% des types de titre en 2023, contrairement au forfait Imagine R qui passe à 30 %. En 2022, comparativement à 2019, le forfait Navigo
-                    a perdu plus d'un million de voyageurs, probablement en lien avec l'évolution du télétravail. En effet, de nombreux travailleurs ont opté pour
-                    le travail totalement ou partiellement en distanciel, rendant le forfait navigo moins intéressant, malgré la prise en charge employeur.
-                    Ce recul reste à confirmer sur l'ensemble de l'année 2023. 
+                    <strong>Utilisation du dataset :</strong> Ce dataset apporte une information sur la fréquentation à la fois par ligne et
+                    par moment de la journée. Il permettra d'étudier les schémas de fréquentation de chaque ligne au fil d'une journée type.
                 </p>
-            </div>
+
+                <h3>Données RATP</h3>
+                <p>
+                    Un ensemble de datasets a été utilisé, génériquement dénommés Trafic annuel entrant
+                    par station du réseau ferré X, où X représente l'année concernée. Les données utilisées
+                    concernent les années <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2021/information/" target="_blank">2021</a>, 
+                    <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2020/information/" target="_blank">2020</a>,
+                    <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2019/information/" target="_blank">2019</a>,
+                    <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2018/information/" target="_blank">2018</a>,
+                    <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2017/information/" target="_blank">2017</a>,
+                    <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2016/information/" target="_blank">2016</a>, et 
+                    <a href="https://data.ratp.fr/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2015/information/" target="_blank">2015</a>.
+                    À l'instar du dataset SNCF, chaque ligne est propre à une station, indiquant le nombre de
+                    voyageurs par station pour l'année. Pour les stations offrant des correspondances entre le métro et le RER, comme c'est le cas
+                    à la station Nation, les données pour chaque réseau sont présentées sur des lignes différentes. Pour un même réseau, 
+                    il s'agit de la fréquentation globale de la station, le détail par ligne n'est pas communiqué. 
+                </p>
+                <p>
+                    <strong>Utilisation des datasets :</strong> Ces datasets, une fois poolés, complètent les données SNCF pour les branches
+                    des RER A et B régies par la RATP. L'établissement des rangs de fréquentation des stations sera effectué après concaténation des données
+                    RATP et SNCF afin de prendre en compte toutes les gares d'Île-de-France.
+                </p>
+
+                <h3>Données Île-de-France Mobilités</h3>
+                <p>
+                    Les données brutes sont un ensemble de datasets dénommés <a href="https://data.iledefrance-mobilites.fr/explore/dataset/histo-validations-reseau-surface/table/" target="_blank">Historique des données de validation sur le réseau de surface (2015-2022)</a>.
+                    Ces tables rapportent la fréquentation par gare, par jour et par type d'abonnement souscrit. Le complément des données pour le premier semestre <a href="https://data.iledefrance-mobilites.fr/explore/dataset/validations-reseau-surface-nombre-validations-par-jour-1er-trimestre/information/" target="_blank">2023</a> était disponible séparément.
+                </p>
+                <p>
+                    <strong>Utilisation des datasets :</strong> Ces données vont apporter des informations importantes, à la fois concernant la fréquentation quotidienne dans 
+                    les gares versaillaises, mais aussi sur les types d'abonnements utilisés par les voyageurs.
+                </p>
+
+                <h2>Preprocessing</h2>
+                <p>
+                    Tous les datasets originaux ont été retravaillés pour les rendre exploitables. Le preprocessing a mené à la création
+                    de trois datasets.
+                </p>
+                
+                <h3>ev_versailles.csv</h3>
+                <p>
+                    Ce dataset a été créé à partir des données de fréquentation annuelle des gares SNCF et RATP. Tous les datasets RATP
+                    (un par année) ont été fusionnés en un seul dataframe, avec élimination des lignes concernant les stations de métro. 
+                    Après fusion des données SNCF et RATP (RER A et RER B), les comptes ont été additionnés pour les gares présentes en
+                    doublon : c'est le cas par exemple pour la gare de Nanterre Université desservie par le 
+                    Transilien L (données issues du dataset SNCF) et le RER A (dataset RATP).
+                </p>
+                <p>
+                    Plusieurs features ont été créées, comme une estimation du trafic pré-covid (moyenne et écart type sur les années 2015 à 2019
+                    incluses), et un calcul de la différence entre ce trafic moyen par gare et le trafic enregistré en 2020, et en 2021. Enfin,
+                    le calcul de la différence de trafic entre 2020 et 2021.
+                </p>
+                <p>
+                    Pour finir, les observations du dataset ont été ordonnées selon la fréquentation par année, de façon à définir,
+                    pour chaque gare et chaque année, le rang parmi l'ensemble des gares franciliennes. Une fois le classement attribué,
+                    seules les observations concernant les gares versaillaises ont été conservées. 
+                </p>
+                
+                <h3>daily.csv</h3>
+                <p>
+                    Ce dataset a été créé à partir des données Île-de-France Mobilités, par concaténation
+                    des différents datasets originaux (2015-2022 et 2023 S1). Certains abonnements ont été regroupés
+                    (ex : tarifications sociales), et les taux de fréquentation des gares hors Versailles ont été transformés
+                    en une unique valeur moyenne pour obtenir une valeur de comparaison "Île-de-France".
+                </p>
+                
+                <h3>counts.csv</h3>
+                <p>
+                    Ce dataset a été créé à partir des données de comptage SNCF. Quasiment utilisable en l'état, 
+                    le preprocessing a été limité à de simples modifications de noms de colonnes, ou de valeurs textuelles,
+                    ainsi qu'un élagage des colonnes inutiles pour le projet.
+                </p>                
+                <h2>Résultats</h2>
+                <h3>Vue principale</h3>
+                <figure>
+                    <img src="static/ef_board_full.png" alt="Dashboard - vue principale" width="1000">
+                    <figcaption>
+                        Vue principale du dashboard
+                    </figcaption>
+                </figure>
+                <p>
+                    La première vue du dashboard donne des informations poolées pour l'ensemble des cinq gares étudiées.
+                    Quand c'est pertinent, les données globales pour l'Île-de-France sont également affichées. Deux types de
+                    filtres sont disponibles : un filtre par gare et un filtre par année. Un drill-through permet d'accéder à
+                    des informations détaillées pour chaque gare : classement annuel parmi la fréquentation des gares franciliennes,
+                    trafic détaillé par jour, projection de la fréquentation par ligne selon le moment de la journée. 
+                </p>
+                <h4>Cards</h4>
+                <p>
+                    Trois éléments "card" sont présents sur le dashboard, offrant une information générale et rapidement accessible. 
+                    Ces derniers donnent une vue d'ensemble des données analysées : nombre total de passagers enregistrés, fréquentation
+                    moyenne par jour en semaine et le week-end, ainsi que le type d'abonnement le plus utilisé. Ces données
+                    sont modulables par gare et par année.
+                </p>
+                <div class="dashboard-analysis">
+                    <p>
+                        Il existe d'importants écarts de fréquentation entre les gares. Sur la période étudiée, Versailles Chantiers a
+                        accueilli plus de 39 millions de voyageurs, contre seulement 2 millions pour Porchefontaine. La réduction moyenne 
+                        du trafic les week-ends se situe autour de 60 %. Une gare se démarque, Versailles Château Rive Gauche, dont le trafic ne
+                        diminue que de 37 % le week-end, en lien avec sa position centrale et surtout sa proximité avec le Château de Versailles.
+                    </p>
+                </div>
+                <h4>Évolution mensuelle du trafic</h4>
+                <p>
+                    Une visualisation temporelle du trafic offre une compréhension rapide de l'évolution du
+                    trafic chaque mois. Les résultats sont présentés en vert pour Versailles et en gris pour la moyenne sur l'Île-de-France.
+                    Les données pour Versailles sont une moyenne sur l'ensemble des gares, et sont filtrables par gare et par année.
+                </p>
+                <div class="dashboard-analysis">
+                    <p>
+                        La saisonnalité du trafic versaillais est stable au fil des années (hors pandémie COVID-19), avec une chute importante du 
+                        trafic en juillet - août et une diminution de moindre ampleur en décembre. Les variations saisonnières sont comparables d'une
+                        gare à l'autre, et se superposent globalement à la saisonnalité observée pour toute l'Île-de-France. La gare de Versailles Château
+                        Rive Gauche ne fait pas exception, suggérant que la part du trafic directement liée au tourisme n'est pas exacerbée l'été.
+                    </p>
+                </div>
+                <h4>Trafic moyen par jour</h4>
+                <p>
+                    Le diagramme en barres horizontales représente le trafic moyen par jour dans les différentes gares, avec la moyenne
+                    francilienne comme référence. Ces barres permettent d'appliquer le filtre par gare pour le reste des visualisations, et offrent la
+                    possibilité d'un drill-through vers une vue détaillée pour chaque gare.
+                </p>
+                <div class="dashboard-analysis">
+                    <p>
+                        Cet élément permet de distinguer trois types de gares. Tout d'abord, la gare de Versailles Chantiers, qui présente une 
+                        fréquentation quotidienne moyenne de 13.1k passagers, soit environ le triple de la fréquentation moyenne en Île-de-France.
+                        Les gares de Versailles Rive Droite et Versailles Château Rive Gauche ont, quant à elles, une fréquentation quotidienne de l'ordre de 4k
+                        passagers, soit très proche de ce qui est enregistré pour l'Île-de-France. Enfin, Montreuil et Porchefontaine, qui offrent une desserte
+                        locale de quartiers périphériques, ont une fréquentation inférieure à 2k passagers par jour.
+                    </p>
+                    <p>
+                        De nombreux facteurs font fluctuer la fréquentation quotidienne, aussi une valeur de fréquentation moyenne globale présente un intérêt limité ; les week-ends, 
+                        mois d'été ainsi que les relevés des années 2020 et 2021 (COVID-19) minorent la fréquentation moyenne en semaine.
+                        Les différents filtres du dashboard, par gare et par année, ainsi que la possibilité d'obtenir des résultats plus détaillés grâce au drill-through,
+                        permettent d'affiner les résultats. Par exemple, la vue initiale indique une fréquentation moyenne par jour de 13.1k passagers à Versailles Chantiers, néanmoins 
+                        les valeurs des mois de mars et juin 2023 portent ce chiffre autour de 21k passagers en moyenne dans cette gare les jours de semaine.
+                    </p>
+                </div>
+                <h4>Évolution du trafic post COVID-19</h4>
+                <p>
+                    Ce diagramme en barres verticales permet de détailler l'évolution du trafic lors de la pandémie de COVID-19. Pour rappel du contexte, les premiers cas de COVID-19
+                    ont été confirmés en France dès la fin du mois de janvier 2020. Devant l'explosion du nombre de cas, un premier confinement est déclaré en date du 17 mars 2020.
+                    Cette pandémie, avec les différents confinements et les mesures de distanciation sociale, perturbera le fonctionnement global de la société française, 
+                    avec un impact marqué sur la fréquentation des transports en commun.
+                </p>        
+                <p>
+                    Le focus est donc fait sur cette période, les données de 2019 (référence pré-COVID), 2020, 2021 et 2022 sont montrées côte à côte. Sous les barres
+                    2020, 2021 et 2022 est précisée la différence relative par rapport à 2019.
+                </p>
+                <div class="dashboard-analysis">
+                    <p>
+                        L'année 2020 a vu le trafic ferroviaire versaillais divisé par deux, allant jusqu'à une baisse de 60 % à Versailles Rive Droite et Montreuil, les
+                        deux gares de la ligne L. Une hypothèse est que ces deux gares desservent avant tout La Défense, où la grande majorité des
+                        emplois tertiaires ont dû mettre en place le télétravail. Du côté de Versailles Chantiers, le trafic n'a diminué que de 36 %, soulignant une fois encore le caractère majeur de cette 
+                        gare dans le réseau francilien. Par la suite, les années 2021 et 2022 ont vu une reprise du trafic, avec une réaugmentation constante. À l'inverse, le trafic n'a pas repris aussi rapidement
+                        à Versailles Château Rive Gauche : -54 % en 2020 et toujours -52 % en 2021. Cette gare est d'ailleurs, en 2022, celle qui enregistre toujours la plus forte baisse de 
+                        trafic comparativement à 2019 (-22 %). Le trafic est en revanche revenu au niveau de 2019 pour Versailles Chantiers, et a déjà augmenté de 5 % à Versailles
+                        Rive Droite. 
+                    </p>
+                </div>
+                <h4>Titres de transport</h4>
+                <p>
+                    La dernière visualisation concerne les types d'abonnement enregistrés et a été regroupée en trois catégories : Forfait Navigo, Forfait Imagine R et "Autres".
+                    Le forfait Navigo est un abonnement accessible sans justification de statut, décliné sous plusieurs formats (annuel, mensuel, hebdomadaire...) qui permet de voyager
+                    dans toute l'Île-de-France. Le forfait Imagine R permet également de se déplacer partout en Île-de-France, à un prix réduit par rapport au forfait Navigo. Il est destiné
+                    aux écoliers et étudiants de moins de 25 ans. Les autres types de titres de transport ont été regroupés pour faciliter la lecture. Parmi ces titres se trouvent notamment
+                    Améthyste (voyageurs de plus de 65 ans) et les tarifications solidaires à destination des personnes ayant de faibles revenus.
+                </p>
+                <div class="dashboard-analysis">
+                    <p>
+                        Les deux tiers des voyageurs sont porteurs d'un forfait Navigo, tandis qu'un quart utilise le forfait
+                        Imagine R. Le reste est réparti entre les différents forfaits proposés par Île-de-France Mobilités. 
+                        De façon intéressante, cette répartition est très comparable d'une gare à l'autre. En revanche, on constate une 
+                        évolution des usages au fil des années : si la part de forfait Imagine R reste stable, autour de 22 %, entre 2015 et 2019, la part
+                        de forfait Navigo, quant à elle, augmente jusqu'à atteindre 70 % en 2018. Le forfait Navigo recule ensuite pour ne plus représenter que 
+                        57 % des types de titres en 2023, contrairement au forfait Imagine R qui passe à 30 %. En 2022, comparativement à 2019, le forfait Navigo
+                        a perdu plus d'un million d'utilisateurs, probablement en lien avec l'évolution du télétravail. En effet, de nombreux travailleurs ont opté pour
+                        le travail totalement ou partiellement à distance, rendant le forfait Navigo moins intéressant, malgré la prise en charge employeur.
+                        Ce recul reste à confirmer sur l'ensemble de l'ïle de France.
+                
             <h2>Conclusions</h2>
             <p>
                 L'analyse des données de trafic ferroviaire des gares versaillaises depuis 2015 révèle 

@@ -1,6 +1,34 @@
 /* GENERAL */
 body {
     font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0; /* Remove padding from the body */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: #f0f0f0; /* Add a background color for better visibility */
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1500px; /* Set a maximum width for the content */
+    padding: 20px; /* Apply padding to the wrapper */
+    background-color: white; /* Optional: set a background color for the wrapper */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: add a shadow for better visibility */
+    box-sizing: border-box;
+}
+
+.border-div {
+    padding: 60px; /* Adjust padding as needed */
+    border: 6px solid gray;
+    background-color: white;
+    font-size: 1.5em;
+}
+
+p {
+    text-align: justify;
 }
 
 /* DATA PROJECTS */
@@ -25,4 +53,14 @@ body {
     font-size:x-large;
     color: forestgreen;
     border-bottom: 2px solid black;
+}
+
+/* EVEN FLOW */
+
+h1.ef {
+    border-bottom: 5px double forestgreen;
+}
+
+h2.ef {
+    font-variant: small-caps;
 }

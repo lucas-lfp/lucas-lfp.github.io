@@ -1,6 +1,6 @@
 /* GENERAL */
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: sans-serif;
     margin: 0;
     padding: 0; /* Remove padding from the body */
     display: flex;
@@ -57,10 +57,62 @@ p {
 
 /* EVEN FLOW */
 
+.ef p {
+    font-family: "Montserrat", 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: large;
+    line-height: 1.8;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.ef ul {
+    font-family: "Montserrat", 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: large; 
+    margin-left: 25px;
+}
+
 h1.ef {
+    
+}
+
+.ef h2 {
+    font-variant: small-caps;
+}
+
+.ef figcaption {
+    font-family: "Montserrat", 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:medium;
+    font-style: italic;
+}
+
+.ef figure {
+    text-align: center;
+}
+
+.ef .fig-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.header-flex-ef {
+    display:flex;
+    align-items: flex-end;
+    gap:50px;
     border-bottom: 5px double forestgreen;
 }
 
-h2.ef {
-    font-variant: small-caps;
+.tech-list {
+    text-align: right;
+    font-style: italic;
+    margin-top: 15px;
 }
+
+.sub-h1 {
+    font-variant: small-caps;
+    font-size: xx-large;
+    margin:0;
+    padding-bottom: 38px;
+    margin-left: auto;
+}
+

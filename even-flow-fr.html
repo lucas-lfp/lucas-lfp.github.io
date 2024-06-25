@@ -7,12 +7,20 @@
         <link rel="alternate" hreflang="fr" href="https://lucas-lfp.github.io/even-flow-fr.html">
         <link rel="alternate" hreflang="en" href="https://lucas-lfp.github.io/even-flow-en.html">
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+
     </head>
     <body class="ef">
         <div class="wrapper">
             <div class="border-div">
-                <h1 class="ef">Even Flow</h1>
-                <h2 class="ef">Introduction</h2>
+                <div class="header-flex-ef">
+                    <h1>Even Flow </h1>
+                    <span class="sub-h1">Buisness Intelligence | Transport Ferroviaire</span>
+                </div>
+                <div class="tech-list">Power BI • Python • Pandas</div>
+                <h2>Introduction</h2>
                 <p>
                     Dans une région très urbanisée comme l'Île-de-France, et en particulier dans l'aire urbaine de Paris, 
                     le transport ferroviaire est un mode de déplacement privilégié au quotidien. Avec plus de 80 000 habitants, 
@@ -51,10 +59,10 @@
                 </p>
                 <figure>
                     <img src="static/map_line_n.png" alt="Carte de la desserte de la ligne N" width="500" height="300">
-                <figcaption>
-                    La desserte de la ligne N dans l'Ouest Francilien.
-                    <div class="source">Source: <a href="https://www.bonjour-ratp.fr/lignes-transilien/ligne-n/" target="_blank">Bonjour-RATP</a></div>
-                </figcaption>
+                    <figcaption>
+                        La desserte de la ligne N dans l'Ouest Francilien.
+                        <div class="source">Source: <a href="https://www.bonjour-ratp.fr/lignes-transilien/ligne-n/" target="_blank">Bonjour-RATP</a></div>
+                    </figcaption>
                 </figure>
                 <h2>Objectif du projet</h2>
                 <p>
@@ -190,24 +198,26 @@
                         diminue que de 37 % le week-end, en lien avec sa position centrale et surtout sa proximité avec le Château de Versailles.
                     </p>
                 </div>
-                <figure>
-                    <img src="static/ef_board_chantiers_cards_2016.png" alt="cards Versailles Chantiers (2016)" width="400" style="border-radius:15px;">
-                    <figcaption>
-                        Versailles Chantiers - 2016
-                    </figcaption>
-                </figure>
-                <figure>
-                    <img src="static/ef_board_chantiers_cards_2022.png" alt="cards Versailles Chantiers (2022)" width="400" style="border-radius:15px;">
-                    <figcaption>
-                        Versailles Chantiers - 2022
-                    </figcaption>
-                </figure>
-                <figure>
-                    <img src="static/ef_board_chateau_cards_2022.png" alt="cards Versailles Château Rive Gauche (2022)" width="400" style="border-radius: 15px;">
-                    <figcaption>
-                        Versailles Château Rive Gauche - 2022
-                    </figcaption>
-                </figure>
+                <div class="fig-wrapper">
+                    <figure>
+                        <img src="static/ef_board_chantiers_cards_2016.png" alt="cards Versailles Chantiers (2016)" width="400" style="border-radius:15px;">
+                        <figcaption>
+                            Versailles Chantiers - 2016
+                        </figcaption>
+                    </figure>
+                    <figure>
+                        <img src="static/ef_board_chantiers_cards_2022.png" alt="cards Versailles Chantiers (2022)" width="400" style="border-radius:15px;">
+                        <figcaption>
+                            Versailles Chantiers - 2022
+                        </figcaption>
+                    </figure>
+                    <figure>
+                        <img src="static/ef_board_chateau_cards_2022.png" alt="cards Versailles Château Rive Gauche (2022)" width="400" style="border-radius: 15px;">
+                        <figcaption>
+                            Versailles Château Rive Gauche - 2022
+                        </figcaption>
+                    </figure>
+                </div>
                 <h4>Évolution mensuelle du trafic</h4>
                 <p>
                     Une visualisation temporelle du trafic offre une compréhension rapide de l'évolution du
@@ -222,24 +232,26 @@
                         Rive Gauche ne fait pas exception, suggérant que la part du trafic directement liée au tourisme n'est pas exacerbée l'été.
                     </p>
                 </div>
-                <figure>
-                    <img src="static/ef_board_chantiers_temporal.png" alt="Graphique : Évolution mensuelle du trafic à Versailles Chantiers (2015-2023)" width="400" style="border-radius: 15px;">
-                    <figcaption>
-                        Évolution mensuelle du trafic à Versailles Chantiers (2015-2023)
-                    </figcaption>
-                </figure>
-                <figure>
-                    <img src="static/ef_board_rd_temporal.png" alt="Graphique : Évolution mensuelle du trafic à Versailles Rive Droite (2015-2023)" width="400" style="border-radius:15px">
-                    <figcaption>
-                        Évolution mensuelle du trafic à Versaille Rive Droite (2015-2023)
-                    </figcaption>
-                </figure>
-                <figure>
-                    <img src="static/ef_board_porchefontaine_temporal.png" alt="Graphique : Évolution mensuelle du trafic à Porchefontaine (2015-2023)" width="400" style="border-radius:15px">
-                    <figcaption>
-                        Évolution mensuelle du trafic à Porchefontaine (2015-2023)
-                    </figcaption>
-                </figure>
+                <div class="fig-wrapper">
+                    <figure>
+                        <img src="static/ef_board_chantiers_temporal.png" alt="Graphique : Évolution mensuelle du trafic à Versailles Chantiers (2015-2023)" width="400" style="border-radius: 15px;">
+                        <figcaption>
+                            Évolution mensuelle du trafic à Versailles Chantiers (2015-2023)
+                        </figcaption>
+                    </figure>
+                    <figure>
+                        <img src="static/ef_board_rd_temporal.png" alt="Graphique : Évolution mensuelle du trafic à Versailles Rive Droite (2015-2023)" width="400" style="border-radius:15px">
+                        <figcaption>
+                            Évolution mensuelle du trafic à Versaille Rive Droite (2015-2023)
+                        </figcaption>
+                    </figure>
+                    <figure>
+                        <img src="static/ef_board_porchefontaine_temporal.png" alt="Graphique : Évolution mensuelle du trafic à Porchefontaine (2015-2023)" width="400" style="border-radius:15px">
+                        <figcaption>
+                            Évolution mensuelle du trafic à Porchefontaine (2015-2023)
+                        </figcaption>
+                    </figure>
+                </div>
                 <h4>Trafic moyen par jour</h4>
                 <p>
                     Le diagramme en barres horizontales représente le trafic moyen par jour dans les différentes gares, avec la moyenne
@@ -261,18 +273,20 @@
                         permettent d'affiner les résultats. Par exemple, la vue initiale indique une fréquentation moyenne par jour de 13.1k passagers à Versailles Chantiers, néanmoins 
                         les valeurs des mois de mars et juin 2023 portent ce chiffre autour de 21k passagers en moyenne dans cette gare les jours de semaine.
                     </p>
-                    <figure>
-                        <img src="static/ef_board_daily_avg_2019.png" alt="Diagramme en barres : Nombre moyen de voyageurs par jour dans les différentes gares (2019)" width="400" style="border-radius: 15px;">
-                        <figcaption>
-                            Trafic quotidien moyen - 2019
-                        </figcaption>
-                    </figure>
-                    <figure>
-                        <img src="static/ef_board_daily_avg_2020.png" alt="Diagramme en barres : Nombre moyen de voyageurs par jour dans les différentes gares (2020)" width="400" style="border-radius: 15px;">
-                        <figcaption>
-                            Trafic quotidien moyen - 2020
-                        </figcaption>
-                    </figure>
+                    <div class="fig-wrapper">
+                        <figure>
+                            <img src="static/ef_board_daily_avg_2019.png" alt="Diagramme en barres : Nombre moyen de voyageurs par jour dans les différentes gares (2019)" width="400" style="border-radius: 15px;">
+                            <figcaption>
+                                Trafic quotidien moyen - 2019
+                            </figcaption>
+                        </figure>
+                        <figure>
+                            <img src="static/ef_board_daily_avg_2020.png" alt="Diagramme en barres : Nombre moyen de voyageurs par jour dans les différentes gares (2020)" width="400" style="border-radius: 15px;">
+                            <figcaption>
+                                Trafic quotidien moyen - 2020
+                            </figcaption>
+                        </figure>
+                    </div>
                 </div>
                 <h4>Répartition du trafic en journée</h4>
                 <p>
@@ -303,30 +317,32 @@
                         progressivement au cours de la journée, pour atteindre un unique pic en soirée.
                     </p>
                 </div>
-                <figure>
-                    <img src="static/ef_board_chantiers_projected.png" alt="Représentation graphique de la distribution des flux de voyageurs au fil de la journée" width="400" style="border-radius: 15px;">
-                    <figcaption>
-                        Flux de voyageurs en semaine - Versailles Chantiers
-                    </figcaption>
-                </figure>
-                <figure>
-                    <img src="static/ef_board_chantiers_projected_saturday.png" alt="Représentation graphique de la distribution des flux de voyageurs au fil de la journée" width="400" style="border-radius: 15px;">
-                    <figcaption>
-                        Flux de voyageurs le samedi - Versailles Chantiers
-                    </figcaption>
-                </figure>
-                <figure>
-                    <img src="static/ef_board_rd_projected.png" alt="Représentation graphique de la distribution des flux de voyageurs au fil de la journée" width="400" style="border-radius: 15px;">
-                    <figcaption>
-                        Flux de voyageurs en semaine - Versailles Rive Droite
-                    </figcaption>
-                </figure>
-                <figure>
-                    <img src="static/ef_board_chateau_projected.png" alt="Représentation graphique de la distribution des flux de voyageurs au fil de la journée" width="400" style="border-radius: 15px;">
-                    <figcaption>
-                        Flux de voyageurs en semaine - Versailles Château Rive Gauche
-                    </figcaption>
-                </figure>
+                <div class="fig-wrapper">
+                    <figure>
+                        <img src="static/ef_board_chantiers_projected.png" alt="Représentation graphique de la distribution des flux de voyageurs au fil de la journée" width="400" style="border-radius: 15px;">
+                        <figcaption>
+                            Flux de voyageurs en semaine<br>Versailles Chantiers
+                        </figcaption>
+                    </figure>
+                    <figure>
+                        <img src="static/ef_board_chantiers_projected_saturday.png" alt="Représentation graphique de la distribution des flux de voyageurs au fil de la journée" width="400" style="border-radius: 15px;">
+                        <figcaption>
+                            Flux de voyageurs le samedi<br>Versailles Chantiers
+                        </figcaption>
+                    </figure>
+                    <figure>
+                        <img src="static/ef_board_rd_projected.png" alt="Représentation graphique de la distribution des flux de voyageurs au fil de la journée" width="400" style="border-radius: 15px;">
+                        <figcaption>
+                            Flux de voyageurs en semaine<br>Versailles Rive Droite
+                        </figcaption>
+                    </figure>
+                    <figure>
+                        <img src="static/ef_board_chateau_projected.png" alt="Représentation graphique de la distribution des flux de voyageurs au fil de la journée" width="400" style="border-radius: 15px;">
+                        <figcaption>
+                            Flux de voyageurs en semaine<br>Versailles Château Rive Gauche
+                        </figcaption>
+                    </figure>
+                </div>
                 <h4>Évolution du trafic post COVID-19</h4>
                 <p>
                     Ce diagramme en barres verticales permet de détailler l'évolution du trafic lors de la pandémie de COVID-19. Pour rappel du contexte, les premiers cas de COVID-19
@@ -349,24 +365,26 @@
                         Rive Droite. 
                     </p>
                 </div>
-                <figure>
-                    <img src="static/ef_board_chantiers_postcovid.png" alt="Diagramme en barres : Évolution du trafic post COVID-19 (Versailles Chantiers)" width="400" style="border-radius: 15px;">
-                    <figcaption>
-                        Trafic post-covid - Versailles Chantiers
-                    </figcaption>
-                </figure>
-                <figure>
-                    <img src="static/ef_board_rd_postcovid.png" alt="Diagramme en barres : Évolution du trafic post COVID-19 (Versailles Rive Droite)" width="400" style="border-radius: 15px;">
-                    <figcaption>
-                        Trafic post-covid - Versailles Rive Droite
-                    </figcaption>
-                </figure>
-                <figure>
-                    <img src="static/ef_board_chateau_postcovid.png" alt="Diagramme en barres : Évolution du trafic post COVID-19 (Versailles Château Rive Gauche)" width="400" style="border-radius: 15px;">
-                    <figcaption>
-                        Trafic post-covid - Versailles Château Rive Gauche
-                    </figcaption>
-                </figure>
+                <div class="fig-wrapper">
+                    <figure>
+                        <img src="static/ef_board_chantiers_postcovid.png" alt="Diagramme en barres : Évolution du trafic post COVID-19 (Versailles Chantiers)" width="400" style="border-radius: 15px;">
+                        <figcaption>
+                            Trafic post-covid - Versailles Chantiers
+                        </figcaption>
+                    </figure>
+                    <figure>
+                        <img src="static/ef_board_rd_postcovid.png" alt="Diagramme en barres : Évolution du trafic post COVID-19 (Versailles Rive Droite)" width="400" style="border-radius: 15px;">
+                        <figcaption>
+                            Trafic post-covid - Versailles Rive Droite
+                        </figcaption>
+                    </figure>
+                    <figure>
+                        <img src="static/ef_board_chateau_postcovid.png" alt="Diagramme en barres : Évolution du trafic post COVID-19 (Versailles Château Rive Gauche)" width="400" style="border-radius: 15px;">
+                        <figcaption>
+                            Trafic post-covid - Versailles Château Rive Gauche
+                        </figcaption>
+                    </figure>
+                </div>
                 <h4>Titres de transport</h4>
                 <p>
                     La dernière visualisation concerne les types d'abonnement enregistrés et a été regroupée en trois catégories : Forfait Navigo, Forfait Imagine R et "Autres".
@@ -388,18 +406,20 @@
                         Ce recul reste à confirmer sur l'ensemble de l'ïle de France.
                     </p>
                 </div>
-                <figure>
-                    <img src="static/ef_board_passtype_2017.png" alt="Diagramme circulaire : Répartition des types d'abonnements (toutes gares - 2017)" width="400" style="border-radius: 15px;">
-                    <figcaption>
-                        Titres de transports utilisés - 2017
-                    </figcaption>
-                </figure>
-                <figure>
-                    <img src="static/ef_board_passtype_2022.png" alt="Diagramme circulaire : Répartition des types d'abonnements (toutes gares - 2022)" width="400" style="border-radius: 15px;">
-                    <figcaption>
-                        Titres de transports utilisés - 2022
-                    </figcaption>
-                </figure>
+                <div class="fig-wrapper">
+                    <figure>
+                        <img src="static/ef_board_passtype_2017.png" alt="Diagramme circulaire : Répartition des types d'abonnements (toutes gares - 2017)" width="400" style="border-radius: 15px;">
+                        <figcaption>
+                            Titres de transports utilisés - 2017
+                        </figcaption>
+                    </figure>
+                    <figure>
+                        <img src="static/ef_board_passtype_2022.png" alt="Diagramme circulaire : Répartition des types d'abonnements (toutes gares - 2022)" width="400" style="border-radius: 15px;">
+                        <figcaption>
+                            Titres de transports utilisés - 2022
+                        </figcaption>
+                    </figure>
+                </div>
                 <h2>Conclusions</h2>
                 <p>
                     L'analyse des données de trafic ferroviaire des gares versaillaises depuis 2015 révèle 

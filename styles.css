@@ -77,9 +77,28 @@ p {
     gap:30px;
 }
 
-.map-ticket-img {
-    width: 100%;
+.map-img {
+    max-height: 360px;
     object-fit: cover;
+    border: 0.5px solid black;
+}
+
+.ticket-img {
+    max-height: 360px;
+    object-fit: cover;
+    border: 0.5px solid black;
+}
+
+.ef .map-img-txts {
+    max-width:600px;
+    text-align: justify;
+    font-size: small;
+}
+
+.ef .ticket-img-txts {
+    max-width: 230px;
+    text-align: justify;
+    font-size: small;
 }
 
 .ef .head-fig {
@@ -91,6 +110,7 @@ p {
 .ef .img-source {
     text-align: right;
     font-size: x-small;
+    margin-bottom: 3px;
 }
 
 .ef .head-fig img {
@@ -114,10 +134,6 @@ p {
     margin-left: 25px;
 }
 
-
-
-
-
 .ef figcaption {
     font-family: "Roboto", sans-serif;
     font-size:medium;
@@ -130,12 +146,11 @@ p {
     padding: 0;
 }
 
-.map-ticket-img {
-    width: 100%;
-    height: auto;
-    max-height: 400px;
-    object-fit: cover;
+.ef .dashboard-analysis {
+    margin-left: 30px;
+    border-left: 7px solid darkgreen;
 }
+
 
 
 

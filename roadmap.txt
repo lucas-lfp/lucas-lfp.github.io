@@ -1,0 +1,6 @@
+EVEN FLOW
+
+- ajouter un back to top
+- ajouter lien vers le fichier .pbix du dashboard
+- ajouter une vue Drill Through vers Rive Droite et Chantiers
+- discuter la pertinence de liens vers articles connexes (musique, Grand Paris Express magazine...)

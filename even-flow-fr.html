@@ -10,12 +10,18 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
-
     </head>
     <body class="ef">
         <div class="wrapper">
             <div class="border-div">
-                <div class="header-flex-ef">
+                <div class="head-container">
+                    <figure class="head-fig">
+                        <img src="static/ef_bandeau.png">
+                        <figcaption class="head-fig-caption">
+                            Photo: <a href="https://objectifgrandparis.fr/versailles-chantiers-un-quartier-contemporain-dans-une-ville-historique/" target="_blank">Objectif Grand Paris</a>
+                        </figcaption>
+                    </figure>
+                    <div class="header-flex-ef">
                     <h1>Even Flow </h1>
                     <span class="sub-h1">Buisness Intelligence | Transport Ferroviaire</span>
                 </div>
@@ -59,14 +65,14 @@
                 </p>
                 <div class="fig-wrapper">
                     <figure>
-                        <img src="static/map_line_n.png" alt="Carte de la desserte de la ligne N" height="500">
+                        <img class="map-ticket-img" src="static/map_line_n.png" alt="Carte de la desserte de la ligne N" height="500">
                         <figcaption>
                             La desserte de la ligne N dans l'Ouest Francilien.
                             <div class="source">Source: <a href="https://www.bonjour-ratp.fr/lignes-transilien/ligne-n/" target="_blank">Bonjour-RATP</a></div>
                         </figcaption>
                     </figure>
                     <figure>
-                        <img src="static/ticket_1977.png" alt="Ticket Paris - Versailles RD datant de 1977" height="500">
+                        <img class="map-ticket-img" src="static/ticket_1977.png" alt="Ticket Paris - Versailles RD datant de 1977" height="500">
                         <figcaption>
                             Billet de train datant de 1977.
                             <div class="source">Source: <a href="https://fr.wikipedia.org/wiki/Tarification_des_transports_en_commun_d%27%C3%8Ele-de-France#" target="_blank">Wikipédia</a></div>
@@ -179,12 +185,14 @@
                 </p>                
                 <h2>Résultats</h2>
                 <h3>Vue principale</h3>
-                <figure>
-                    <img src="static/ef_board_full.png" alt="Dashboard - vue principale" width="1000">
-                    <figcaption>
-                        Vue principale du dashboard
-                    </figcaption>
-                </figure>
+                <div class="container">
+                    <figure>
+                        <img class="dashboard-view" src="static/ef_board_full.png" alt="Dashboard - vue principale">
+                        <figcaption>
+                            Vue principale du dashboard
+                        </figcaption>
+                    </figure>
+                </div>
                 <p>
                     La première vue du dashboard donne des informations poolées pour l'ensemble des cinq gares étudiées.
                     Quand c'est pertinent, les données globales pour l'Île-de-France sont également affichées. Deux types de
@@ -467,20 +475,20 @@
                 <h3>Application du filtre Année</h3>
                 <h4>Année 2019</h4>
                 <figure>
-                    <img src="static/ef_board_2019.png" width="1000">
+                    <img class="dashboard-view" src="static/ef_board_2019.png" width="1000">
                 </figure>
                 <h4>Année 2020</h4>
                 <figure>
-                    <img src="static/ef_board_2020.png" width="1000">
+                    <img class="dashboard-view" src="static/ef_board_2020.png" width="1000">
                 </figure>
                 <h3>Vues après drill-through</h3>
                 <h4>Versailles Château Rive Gauche, 2019</h4>
                 <figure>
-                    <img src="static/ef_board_chateau_2019_focus.png" width="1000">
+                    <img class="dashboard-view" src="static/ef_board_chateau_2019_focus.png" width="1000">
                 </figure>
                 <h4>Versailles Château Rive Gauche, 2020</h4>
                 <figure>
-                    <img src="static/ef_board_chateau_2020_focus.png" width="1000">
+                    <img class="dashboard-view" src="static/ef_board_chateau_2020_focus.png" width="1000">
                 </figure>
             </div>
         </div>

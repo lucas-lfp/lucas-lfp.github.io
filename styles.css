@@ -57,6 +57,30 @@ p {
 
 /* EVEN FLOW */
 
+.ef .container {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.ef .head-fig {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.ef .head-fig-caption {
+    text-align: right;
+    font-size: x-small;
+}
+
+.ef .head-fig img {
+    width: 100%;
+    height: auto;
+    max-height: 400px; /* Optional: limit the maximum height */
+    object-fit: cover; /* Ensures the image covers the container */
+}
+
 .ef p {
     font-family: "Montserrat", 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: large;
@@ -87,6 +111,22 @@ h1.ef {
 
 .ef figure {
     text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.map-ticket-img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.dashboard-view {
+    width: 100%;
+    height: auto;
+    max-height: max-content;
+    object-fit: cover;
 }
 
 .ef .fig-wrapper {
@@ -98,7 +138,6 @@ h1.ef {
 .header-flex-ef {
     display:flex;
     align-items: flex-end;
-    gap:50px;
     border-bottom: 5px double forestgreen;
 }
 
